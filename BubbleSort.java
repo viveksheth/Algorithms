@@ -1,49 +1,71 @@
+// bubbleSort.java
+//Author: Vivek Sheth
+// to run this program: $java BubbleSort
 
-public class BubbleSort {
-	
-	public static void main(String[] arg)
+class ArrayBubble
+{
+	private long[] a; // ref to array a
+	private int nElems; // number of data items
+	//--------------------------------------------------------------
+	public ArrayBubble(int max) // constructor
 	{
-		int a [] = {1,22,72,8,21,54,98,644,003};
-		
-		//by default flag will be set to ascending order
-		int t [] = bubblesortFunc(a,true);
-		showArray(t);
+		a = new long[max]; // create the array
+		nElems = 0; // no items yet
 	}
-	
-	static void showArray(int []a)
+	//--------------------------------------------------------------
+	public void insert(long value) // put element into array
 	{
-		for(int i=0;i<a.length;i++)
-		{
-			System.out.print(a[i]+" | ");
-		}
+		a[nElems] = value; // insert it
+		nElems++; // increment size
 	}
-	
-	static int[] bubblesortFunc(int []unsorted, boolean flag)
+	//--------------------------------------------------------------
+	public void display() // displays array contents
 	{
-		for(int i =0; i<unsorted.length;i++)
-		{
-			for(int j=i+1; j<unsorted.length;j++)
-			{
-				if(flag)
-				{
-					if(unsorted[j]<unsorted[i])
-					{
-						int temp = unsorted[i];
-						unsorted[i]=unsorted[j];
-						unsorted[j]= temp;
-					}
-				}
-				else
-				{
-					if(unsorted[j]>unsorted[i])
-					{
-						int temp = unsorted[i];
-						unsorted[i]=unsorted[j];
-						unsorted[j]= temp;
-					}
-				}
-			}
-		}
-		return unsorted;
+		for(int j=0; j<nElems; j++) // for each element,
+		System.out.print(a[j] + " "); // display it
+		System.out.println("");
 	}
+	//--------------------------------------------------------------
+	public void bubbleSort()
+	{
+		int out, in;
+		for(out=nElems-1; out>1; out--) // outer loop (backward)
+		for(in=0; in<out; in++) // inner loop (forward)
+		if( a[in] > a[in+1] ) // out of order?
+		swap(in, in+1); // swap them
+} // end bubbleSort()
+//--------------------------------------------------------------
+private void swap(int one, int two)
+{
+	long temp = a[one];
+	a[one] = a[two];
+	a[two] = temp;
 }
+//--------------------------------------------------------------
+} // end class ArrayBubble
+
+
+class BubbleSort
+{
+	public static void main(String[] args)
+	{
+		int maxSize = 100; // array size
+		ArrayBubble arr; // reference to array
+		arr = new ArrayBubble(maxSize); // create the array
+		arr.insert(77); // insert 10 items
+		arr.insert(99);
+		arr.insert(44);
+		arr.insert(55);
+		arr.insert(22);
+		arr.insert(88);
+		arr.insert(11);
+		arr.insert(00);
+		arr.insert(66);
+		arr.insert(33);
+		arr.display(); // display items
+		arr.bubbleSort(); // bubble sort them
+		
+		arr.display(); // display them again
+	} // end main()
+	
+} // end class BubbleSort
