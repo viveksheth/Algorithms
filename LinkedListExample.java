@@ -1,3 +1,6 @@
+// LinkedListExample.java
+// demonstrates Linked List: Insert, Delete and Display Elements
+// to run this program: $java LinkedListExample
 
 class Link
 {
