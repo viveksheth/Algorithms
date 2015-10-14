@@ -89,9 +89,9 @@ public class ArrayExample {
 		int searchKey = 33; // search for item
 		
 		if( arr.findElem(searchKey))
-		System.out.println("Found " + searchKey);
+			System.out.println("Found " + searchKey);
 		else
-		System.out.println("Can’t find " + searchKey);
+			System.out.println("Can’t find " + searchKey);
 
 		arr.deleteElem(00); // delete 3 items
 		arr.deleteElem(55);
